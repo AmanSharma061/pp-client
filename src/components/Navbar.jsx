@@ -7,6 +7,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { io } from 'socket.io-client'
 import { menus } from '../constants/index'
 export default function Navbar () {
+  
   const socket = useMemo(() =>  io.connect(import.meta.env.VITE_SERVER_URL), [])
   const [state, setState] = React.useState(false)
   const { isAuthenticated } = useContext(UserContext)

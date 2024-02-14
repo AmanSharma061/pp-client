@@ -8,6 +8,7 @@ import { FaEquals } from 'react-icons/fa'
 import CARD from './CARD'
 
 const Results = () => {
+  document.title="Poll Pit | Results"
   const socket = useMemo(() => io.connect(import.meta.env.VITE_SERVER_URL), [])
   const navigate = useNavigate()
   const [polls, setPolls] = useState([])

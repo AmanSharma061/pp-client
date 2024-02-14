@@ -6,6 +6,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import { axiosInstance } from '../api/axios_config'
 const CreatePoll = () => {
+  document.title="Poll Pit | Create"
   const navigate = useNavigate()
   const { userDetails, setUserDetails, setIsAuthenticated, isAuthenticated } =
     useContext(UserContext)

@@ -6,6 +6,7 @@ import CARD from './CARD'
 import { io } from 'socket.io-client'
 
 const Profile = () => {
+  document.title="Poll Pit | Profile"
   const socket = useMemo(() =>  io.connect(import.meta.env.VITE_SERVER_URL), [])
   const navigate = useNavigate()
   const { isAuthenticated } = useContext(UserContext)

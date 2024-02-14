@@ -7,6 +7,7 @@ import axios, { all } from 'axios'
 import { Button } from 'flowbite-react'
 import { axiosInstance } from '../api/axios_config'
 export default function Home () {
+  document.title="Poll Pit | Home"
   const { allPolls, setAllPolls } = useContext(PollContext)
   const getAllPolls = async () => {
     const polls = await axiosInstance.get('/api/getPolls')

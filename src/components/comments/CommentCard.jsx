@@ -6,8 +6,8 @@ const CommentCard = ({ user, comment }) => {
     <div class='w-full mx-10 bg-white shadow-lg rounded-lg gap-y-4 mb-4 overflow-hidden'>
       <div class='flex items-center p-4 '>
         <img
-          class='h-8 w-8 rounded-full mr-2'
-          src='https://via.placeholder.com/50'
+          class='h-8 w-8 rounded-full mr-2 object-cover'
+          src={comment?.postedBy?.image}
           alt='User Avatar'
         />
         <div>

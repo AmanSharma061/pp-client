@@ -11,15 +11,13 @@ import CommentCard from './comments/CommentCard'
 import { axiosInstance } from '../api/axios_config'
 
 const SinglePoll = () => {
+  document.title = 'Poll Pit | Poll now'
   const [selectedValue, setSelectedValue] = useState(null)
   const [isDisabled, setIsDisabled] = useState(false)
-  const [comment, setComment] = useState('')
+  const [comment, setComment] = useState(null)
   const [comments, setComments] = useState([])
   const { singlePoll, setSinglePoll } = useContext(PollContext)
-  const socket = useMemo(
-    () => io.connect(import.meta.env.VITE_SERVER_URL),
-    []
-  )
+  const socket = useMemo(() => io.connect(import.meta.env.VITE_SERVER_URL), [])
   const user = JSON.parse(localStorage.getItem('user'))
   const pathname = useParams()
   const pollId = pathname.id
@@ -32,6 +30,7 @@ const SinglePoll = () => {
 
   const SubmitHandler = async e => {
     e.preventDefault()
+   
     const details = {
       userId,
       pollId,
@@ -67,6 +66,11 @@ const SinglePoll = () => {
   }, [socket, setComments, pollId])
   const formhandler = async e => {
     e.preventDefault()
+    if (comment ==null) {
+
+      toast.error('No Comment Entered')
+      return
+    }
     socket.emit('post_comment', {
       pollId,
       comment,
@@ -83,7 +87,7 @@ const SinglePoll = () => {
   }, [])
 
   return (
-    <div className='min-h-100  flex flex-col justify-center py-12 sm:px-6 lg:px-8'>
+    <div className='min-h-[100%] flex flex-col justify-center py-12 sm:px-6 lg:px-8'>
       <div className='sm:mx-auto sm:w-full sm:max-w-md'>
         <h2 className='mt-6 text-center text-2xl font-extrabold text-gray-900'>
           {singlePoll.title}
