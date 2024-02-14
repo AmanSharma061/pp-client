@@ -20,7 +20,7 @@ export default function Home () {
 
   return (
     <>
-      <div className='w-full py-2 h-full  px-8 max-w-screen-2xl mx-auto '>
+      <div className='w-full py-2 h-screen  px-8 max-w-screen-2xl mx-auto '>
         <div className='text-4xl font-bold text-neutral-700 px-2 py-6'>
           <h1>Listed polls</h1>
         </div>

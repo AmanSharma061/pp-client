@@ -6,7 +6,7 @@ import { Toaster } from 'react-hot-toast'
 const Layout = () => {
   return (
     <>
-      <div className='w-full h-[100vh] pb-8 box-border bg-gray-100'>
+      <div className='w-full  pb-8 box-border '>
         <Navbar />
        <div className='px-4'>
         <Toaster/>
