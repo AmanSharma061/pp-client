@@ -4,25 +4,25 @@ import { Link } from 'react-router-dom'
 import { PollContext } from '../contexts/PollContext'
 import { UserContext } from '../contexts/UserContext'
 const CARD = ({ poll }) => {
-  const {setSinglePoll}=useContext(PollContext)
-  const {isAuthenticated}=useContext(UserContext)
+  const { setSinglePoll } = useContext(PollContext)
+  const { isAuthenticated } = useContext(UserContext)
 
-  const user=localStorage.getItem('user')
+  const user = localStorage.getItem('user')
   return (
-    <Card className='max-w-md h-44 rounded-xl'>
+    <Card className='max-w-md max-h-56 rounded-xl'>
       <h5 className='text-2xl font-bold tracking-tight text-neutral-700 dark:text-white pb-4'>
         {poll?.title}
       </h5>
       <p className='font-normal text-neutral-700 dark:text-gray-400 pb-1'>
         {poll?.description}
       </p>
-      <Button className='bg-indigo-600 text-white w-fit'>
-        <Link
-        onClick={()=>setSinglePoll(poll)}
-          to={`${isAuthenticated || user ?`/poll/${poll._id}`:"/login"}`}
-          className='flex items-center justify-center'
-        >
-          Poll Now
+
+      <Link
+        to={`${isAuthenticated || user ? `/poll/${poll._id}` : '/login'}`}
+        className=''
+      >
+        <Button className='bg-indigo-600 text-white w-fit'>
+          Vote Now{' '}
           <svg
             className='-mr-1 ml-2 h-4 w-4'
             fill='white'
@@ -35,8 +35,8 @@ const CARD = ({ poll }) => {
               clipRule='evenodd'
             />
           </svg>
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </Card>
   )
 }
