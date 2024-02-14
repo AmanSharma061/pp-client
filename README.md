@@ -73,9 +73,9 @@ Welcome to PollPit! PollPit is a web application where users can create, partici
    ```
 5. Configure the environment variables i.e. VITE_CLOUDINARY_API_KEY
 
-6. Visit the [Sever Repo ](https://github.com/AmanSharma061/pp-server) to setup the server also 
+6. Visit the [Sever Repo ](https://github.com/AmanSharma061/pp-server) to setup the server. 
 
-7. In the terminal typw thw given command
+7. In the terminal type thw given command
    ```bash
    npm run dev
    ```
