@@ -1,4 +1,4 @@
-import { axiosInstance } from '../api/axios_config'
+import { axiosInstance } from '../../api/axios_config.js'
 import { UserContext } from '../../contexts/UserContext'
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
