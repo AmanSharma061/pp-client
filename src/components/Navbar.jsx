@@ -7,7 +7,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { io } from 'socket.io-client'
 import { menus } from '../constants/index'
 export default function Navbar () {
-  const socket = useMemo(() => io.connect('http://localhost:3000'), [])
+  const socket = useMemo(() => io.connect('https://poll-lp7q.onrender.com/'), [])
   const [state, setState] = React.useState(false)
   const { isAuthenticated } = useContext(UserContext)
   const [Notifications, setNotifications] = useState([])
