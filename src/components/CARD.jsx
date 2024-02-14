@@ -9,7 +9,7 @@ const CARD = ({ poll }) => {
 
   const user = localStorage.getItem('user')
   return (
-    <Card className='max-w-md max-h-56 rounded-xl'>
+    <Card className='max-w-md max-h-80 rounded-xl'>
       <h5 className='text-2xl font-bold tracking-tight text-neutral-700 dark:text-white pb-4'>
         {poll?.title}
       </h5>

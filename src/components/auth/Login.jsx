@@ -24,6 +24,12 @@ const Login = () => {
     })
 
     const details = res?.data
+
+    if(details?.error){
+      toast.error(details?.error)
+      return
+    }
+
     setIsAuthenticated(true)
     localStorage.setItem('user', JSON.stringify(details?.user))
     setUserDetails(details?.user)
@@ -32,11 +38,9 @@ const Login = () => {
         autocomplete: 800
       })
       navigate('/')
-    } else if (res?.data?.error) {
-      toast.success(res?.data?.error, {
-        autocomplete: 800
-      })
-    }
+    } 
+      
+    
   }
 
   const changeHandler = event => {
