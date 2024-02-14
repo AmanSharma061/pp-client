@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
-import { axiosInstance } from '../api/axios_config'
+import { axiosInstance } from '../../api/axios_config'
 
 export default function Signup () {
   const navigate = useNavigate()

@@ -1,4 +1,4 @@
-import { axiosInstance } from '../api/axios_config'
+import { axiosInstance } from '../../api/axios_config.js'
 import { PollContext } from '../../contexts/PollContext'
 import { UserContext } from '../../contexts/UserContext'
 import axios from 'axios'
