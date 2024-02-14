@@ -87,8 +87,8 @@ const Profile = () => {
           <ul className='grid md:grid-cols-2 xl:grid-cols-3 lg:grid-cols-3 gap-y-4 gap-x-2 max-w-screen-2xl mx-auto'>
             {VotedPolls?.length > 0 ? (
               <>
-                {VotedPolls?.map(poll => {
-                  return <CARD poll={poll} />
+                {VotedPolls?.map((poll,i) => {
+                  return <CARD key={i} poll={poll} />
                 })}
               </>
             ) : (

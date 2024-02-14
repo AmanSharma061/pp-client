@@ -35,9 +35,9 @@ const Results = () => {
         Let's See Results{' '}
       </h2>
       {polls?.map((poll, i) => {
-        return (
-          <div className='grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-y-4  w-full  '>
-            <div key={i} className='my-2'>
+        return ( 
+          <div className='grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-y-4  w-full  '  key={i}>
+            <div className='my-2'>
               <CARD poll={poll} />
             </div>
             <div className='w-full items-center flex justify-center'>

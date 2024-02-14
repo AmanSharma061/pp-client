@@ -28,9 +28,8 @@ export default function Signup () {
     const formData = new FormData()
     formData.append('file', image)
     formData.append('upload_preset', 'profile')
-    // formData.append('upload_preset', 'YOUR_UPLOAD_PRESET'); // Replace 'YOUR_UPLOAD_PRESET' with your actual Cloudinary upload preset
-    formData.append('api_key', '827512854861778') // Replace 'YOUR_UPLOAD_PRESET' with your actual Cloudinary upload preset
 
+    formData.append('api_key', import.meta.env.VITE_CLOUDINARY_API_KEY)
     try {
       const response = await fetch(
         'https://api.cloudinary.com/v1_1/djvu6qgds/image/upload',
@@ -42,7 +41,6 @@ export default function Signup () {
 
       const data = await response.json()
       if (data.secure_url) {
-        console.log('donw', data.secure_url)
         setImageUrl(data.secure_url)
         setUploadDisabled(true)
         setIsdisabled(false)
@@ -60,9 +58,28 @@ export default function Signup () {
     try {
       // Update the data object with the image URL
       const userData = { ...data, image: imageUrl }
-      await axiosInstance.post('/api/signup', userData)
 
-      toast.success('User Created Successfully', { autoClose: 2000 })
+      if (
+        !data.name ||
+        !data.email ||
+        !imageUrl ||
+        !data.password ||
+        !data.cpassword
+      ) {
+        console.log(data.name)
+        toast.error('Missing Fields')
+        return
+      }
+      const res = await axiosInstance.post('/api/signup', userData)
+
+      if (res?.data?.error) {
+        toast.error(res?.data?.error)
+        return
+      }
+      if (res?.data?.message) {
+        toast.success(res?.data?.message)
+      }
+
       navigate('/login')
     } catch (error) {
       console.error('Error creating user:', error)
@@ -170,7 +187,9 @@ export default function Signup () {
                 <p
                   disabled={uploadDisabled}
                   onClick={() => uploadImage()}
-                  className='px-4 py-2 my-1 bg-indigo-600 rounded-lg items-center justify-center flex text-white cursor-pointer'
+                  className={`px-4 py-2 my-1 ${
+                    uploadDisabled ? 'bg-indigo-400' : 'bg-indigo-600'
+                  } rounded-lg items-center justify-center flex text-white cursor-pointer `}
                 >
                   Upload
                 </p>
@@ -178,7 +197,9 @@ export default function Signup () {
               <button
                 disabled={isDisabled}
                 type='submit'
-                className='w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 bg-purple-600'
+                className={`w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800  ${
+                  isDisabled ? 'bg-purple-400' : 'bg-purple-600'
+                }`}
               >
                 Create an account
               </button>

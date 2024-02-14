@@ -1,26 +1,22 @@
+import React, { useContext, useEffect, useMemo } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { UserContext } from '../contexts/UserContext'
-import { Button } from 'flowbite-react'
-import { Menu, Search } from 'lucide-react'
-import React, { useContext, useEffect, useMemo, useState } from 'react'
-import toast from 'react-hot-toast'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { io } from 'socket.io-client'
 import { menus } from '../constants/index'
+import { Button } from 'flowbite-react'
+import { io } from 'socket.io-client'
+import { Menu } from 'lucide-react'
+import toast from 'react-hot-toast'
+
 export default function Navbar () {
-  
-  const socket = useMemo(() =>  io.connect(import.meta.env.VITE_SERVER_URL), [])
-  const [state, setState] = React.useState(false)
-  const { isAuthenticated } = useContext(UserContext)
-  const [Notifications, setNotifications] = useState([])
-
+  const socket = useMemo(() => io.connect(import.meta.env.VITE_SERVER_URL), [])
   const userId = JSON.parse(localStorage.getItem('user'))?.id
-
-  const { pathname } = useLocation()
-  const navigate = useNavigate()
+  const { isAuthenticated } = useContext(UserContext)
+  const [state, setState] = React.useState(false)
   const user = localStorage.getItem('user')
+  const { pathname } = useLocation()
+
   useEffect(() => {
     socket.on('broadcast', data => {
-      console.log(data)
       const ln = data.lastNotification
       if (ln?.notificationBy?._id == userId) {
       } else if (ln?.notificationFor?._id == userId) {

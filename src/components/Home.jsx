@@ -1,20 +1,20 @@
-import { Link } from 'react-router-dom'
-
-import CARD from './CARD'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { PollContext } from '../contexts/PollContext'
-import axios, { all } from 'axios'
-import { Button } from 'flowbite-react'
 import { axiosInstance } from '../api/axios_config'
-export default function Home () {
-  document.title="Poll Pit | Home"
-  const { allPolls, setAllPolls } = useContext(PollContext)
-  const getAllPolls = async () => {
-    const polls = await axiosInstance.get('/api/getPolls')
+import { Link } from 'react-router-dom'
+import CARD from './CARD'
 
-    setAllPolls(polls?.data)
-  }
+export default function Home () {
+  const { allPolls, setAllPolls } = useContext(PollContext)
+  /// Not Good Way But just setting the title
+  document.title = 'Poll Pit | Home'
+
+  //Getting all the polls
   useEffect(() => {
+    const getAllPolls = async () => {
+      const polls = await axiosInstance.get('/api/getPolls')
+      setAllPolls(polls?.data)
+    }
     getAllPolls()
   }, [])
 
@@ -28,8 +28,8 @@ export default function Home () {
         <div className='grid md:grid-cols-2 xl:grid-cols-3 lg:grid-cols-3 gap-y-4 gap-x-2 max-w-screen-2xl mx-auto'>
           {allPolls.length > 0 ? (
             <>
-              {allPolls?.map(poll => {
-                return <CARD poll={poll} />
+              {allPolls?.map((poll, i) => {
+                return <CARD key={i} poll={poll} />
               })}
             </>
           ) : (

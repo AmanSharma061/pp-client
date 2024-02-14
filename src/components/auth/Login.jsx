@@ -15,18 +15,28 @@ const Login = () => {
   })
   const handler = async e => {
     e.preventDefault()
+    if (!data.email || !data.password) {
+      toast.error('Missing Fields')
+      return
+    }
     const res = await axiosInstance.post('/api/login', {
       ...data
     })
+
     const details = res?.data
     setIsAuthenticated(true)
     localStorage.setItem('user', JSON.stringify(details?.user))
     setUserDetails(details?.user)
-
-    toast.success('Logged in successfully', {
-      autocomplete: 800
-    })
-    navigate('/')
+    if (res?.data?.message) {
+      toast.success(res?.data?.message, {
+        autocomplete: 800
+      })
+      navigate('/')
+    } else if (res?.data?.error) {
+      toast.success(res?.data?.error, {
+        autocomplete: 800
+      })
+    }
   }
 
   const changeHandler = event => {
