@@ -1,6 +1,6 @@
 # PollPit
 
-Welcome to PollPit! PollPit is a web application where users can create, participate in, and view the results of polls. Users can also comment on polls, and creators receive notifications for comments. The application features four main pages: Home Page, Create Poll Page, Results Page, and Profile Page, along with live notifications . PollPit utilizes React for the frontend, Node.js and Express for the backend, MongoDB for the database, Cloudinary for profile image uploading, and JWT for authentication and authorization.
+Welcome to PollPit! PollPit is a web application where users can create, participate in, and view the results of polls. Users can also comment on polls, and creators receive notifications for comments. The application features four main pages: Home Page, Create Poll Page, Results Page, and Profile Page, along with live notifications . PollPit utilizes React for the frontend, Node.js and Express for the backend, MongoDB for the database, Cloudinary for profile image uploading, and JWT for authentication and authorization.Voting on polls , commenting on polls and notifications all are realtime build using the websockets.
 
 ## Features
 
@@ -40,11 +40,12 @@ Welcome to PollPit! PollPit is a web application where users can create, partici
 ![Profile Page](/public//profile_page.png)
 
 - **Features**:
-  - Display user information such as username, email, and profile image.
+  - Display user information such as username, email, polls created by the user and the polls on which the user has voted on .
 
 ## Technologies Used
 
 - **Frontend**: React
+- **Socket.io** 
 - **Backend**: Node.js, Express
 - **Database**: MongoDB
 - **File Upload**: Cloudinary
