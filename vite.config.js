@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://pp-server.onrender.com",
+        target: "https://pp-server.onrender.com/",
         changeOrigin: true,
         secure: false,
         ws: true
