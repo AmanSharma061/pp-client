@@ -66,7 +66,7 @@ export default function Signup () {
         !data.password ||
         !data.cpassword
       ) {
-        console.log(data.name)
+       
         toast.error('Missing Fields')
         return
       }
