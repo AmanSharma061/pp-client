@@ -56,4 +56,23 @@ Welcome to PollPit! PollPit is a web application where users can create, partici
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/AmanSharma061/pp-client.git
+   ```
+   
+2. Jump to pp-client directory
+   ```bash
+   cd pp-client
+   ```
+   
+3. In the root directory create .env file for environment variables
+
+4. Configure the environment variables i.e. VITE_CLOUDINARY_API_KEY
+
+5. Visit the [Sever Repo ]() to setup the server also 
+
+6. In the terminal typw thw given command
+   ```bash
+   npm run dev
+   ```
+7. In Your Browser Proceed to http://localhost:5173 to see the demo 
+   
