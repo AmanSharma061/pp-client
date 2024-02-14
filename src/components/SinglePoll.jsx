@@ -15,12 +15,15 @@ const SinglePoll = () => {
   const [comment, setComment] = useState('')
   const [comments, setComments] = useState([])
   const { singlePoll, setSinglePoll } = useContext(PollContext)
-  const socket = useMemo(() =>  io.connect('https://pp-server.onrender.com/'), [])
+  const socket = useMemo(
+    () => io.connect('https://pp-server.onrender.com/'),
+    []
+  )
   const user = JSON.parse(localStorage.getItem('user'))
   const pathname = useParams()
   const pollId = pathname.id
   const userId = user.id
-  const createrId=singlePoll?.creater?._id;
+  const createrId = singlePoll?.creater?._id
 
   const handleRadioChange = event => {
     setSelectedValue(event.target.value)
@@ -31,7 +34,7 @@ const SinglePoll = () => {
     const details = {
       userId,
       pollId,
-      selectedValue,
+      selectedValue
     }
     socket.emit('voting', details)
     socket.on('message', data => {
@@ -77,11 +80,6 @@ const SinglePoll = () => {
       setComments(data.pollComments)
     })
   }, [])
-
-
-
-
-
 
   return (
     <div className='min-h-100  flex flex-col justify-center py-12 sm:px-6 lg:px-8'>

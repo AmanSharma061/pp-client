@@ -8,7 +8,7 @@ import { Button } from 'flowbite-react'
 export default function Home () {
   const { allPolls, setAllPolls } = useContext(PollContext)
   const getAllPolls = async () => {
-    const polls = await axios.get('/api/getPolls')
+    const polls = await axios.get('https://pp-server.onrender.com/api/getPolls')
 
     setAllPolls(polls?.data)
   }
