@@ -1,4 +1,4 @@
-# PollPit
+# 🔗 [PollPit](https://pp-client-amber.vercel.app)                                                                                                                                     
 
 Welcome to PollPit! PollPit is a web application where users can create, participate in, and view the results of polls. Users can also comment on polls, and creators receive notifications for comments. The application features four main pages: Home Page, Create Poll Page, Results Page, and Profile Page, along with live notifications . PollPit utilizes React for the frontend, Node.js and Express for the backend, MongoDB for the database, Cloudinary for profile image uploading, and JWT for authentication and authorization.Voting on polls , commenting on polls and notifications all are realtime build using the websockets.
 
