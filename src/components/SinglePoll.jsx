@@ -8,6 +8,7 @@ import { io } from 'socket.io-client'
 import { useParams } from 'react-router-dom'
 import moment from 'moment/moment'
 import CommentCard from './comments/CommentCard'
+import { axiosInstance } from '../api/axios_config'
 
 const SinglePoll = () => {
   const [selectedValue, setSelectedValue] = useState(null)
@@ -50,7 +51,7 @@ const SinglePoll = () => {
   }
 
   const getSingleById = async () => {
-    const res = await axios.post('/api/getSingle', { pollId })
+    const res = await axiosInstance.post('/api/getSingle', { pollId })
 
     setSinglePoll(res.data)
   }

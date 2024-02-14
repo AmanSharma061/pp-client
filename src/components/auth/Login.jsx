@@ -1,3 +1,4 @@
+import { axiosInstance } from '@/api/axios_config'
 import { UserContext } from '../../contexts/UserContext'
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
@@ -14,7 +15,7 @@ const Login = () => {
   })
   const handler = async e => {
     e.preventDefault()
-    const res = await axios.post('/api/login', {
+    const res = await axiosInstance.post('/api/login', {
       ...data
     })
     const details = res?.data

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
+import { axiosInstance } from '../api/axios_config'
 
 export default function Signup () {
   const navigate = useNavigate()
@@ -59,7 +60,7 @@ export default function Signup () {
     try {
       // Update the data object with the image URL
       const userData = { ...data, image: imageUrl }
-      await axios.post('/api/signup', userData)
+      await axiosInstance.post('/api/signup', userData)
 
       toast.success('User Created Successfully', { autoClose: 2000 })
       navigate('/login')

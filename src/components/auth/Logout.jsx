@@ -1,3 +1,4 @@
+import { axiosInstance } from '../api/axios_config'
 import { PollContext } from '../../contexts/PollContext'
 import { UserContext } from '../../contexts/UserContext'
 import axios from 'axios'
@@ -11,7 +12,7 @@ const Logout = () => {
   const navigate = useNavigate()
   useEffect(() => {
     const logOut = async () => {
-      axios.post('/api/logout')
+      axiosInstance.post('/api/logout')
       setIsAuthenticated(false)
       setSinglePoll({})
 

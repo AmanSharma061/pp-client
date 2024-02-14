@@ -5,10 +5,11 @@ import { useContext, useEffect, useState } from 'react'
 import { PollContext } from '../contexts/PollContext'
 import axios, { all } from 'axios'
 import { Button } from 'flowbite-react'
+import { axiosInstance } from '../api/axios_config'
 export default function Home () {
   const { allPolls, setAllPolls } = useContext(PollContext)
   const getAllPolls = async () => {
-    const polls = await axios.get('https://pp-server.onrender.com/api/getPolls')
+    const polls = await axiosInstance.get('/api/getPolls')
 
     setAllPolls(polls?.data)
   }
@@ -33,8 +34,15 @@ export default function Home () {
           ) : (
             <>
               <div className='px-2 flex flex-col gap-y-2'>
-                <h1 className='text-xl font-semibold text-neutral-700'>Nobody Created any poll</h1>
-                <Link to={'create'} className='text-medium text-white bg-indigo-700/90 px-4 py-2 rounded-xl w-fit'>Be the first</Link>
+                <h1 className='text-xl font-semibold text-neutral-700'>
+                  Nobody Created any poll
+                </h1>
+                <Link
+                  to={'create'}
+                  className='text-medium text-white bg-indigo-700/90 px-4 py-2 rounded-xl w-fit'
+                >
+                  Be the first
+                </Link>
               </div>
             </>
           )}

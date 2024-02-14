@@ -4,6 +4,7 @@ import { Button, Checkbox, Label, TextInput } from 'flowbite-react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { axiosInstance } from '../api/axios_config'
 const CreatePoll = () => {
   const navigate = useNavigate()
   const { userDetails, setUserDetails, setIsAuthenticated, isAuthenticated } =
@@ -22,7 +23,7 @@ const CreatePoll = () => {
 
     const user = JSON.parse(localStorage.getItem('user'))
 
-    const response = await axios.post('/api/create', { user, options, data })
+    const response = await axiosInstance.post('/api/create', { user, options, data })
     const res = response.data
 
     toast.success(res.message, {
