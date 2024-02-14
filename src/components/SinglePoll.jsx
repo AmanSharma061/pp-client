@@ -15,7 +15,7 @@ const SinglePoll = () => {
   const [comment, setComment] = useState('')
   const [comments, setComments] = useState([])
   const { singlePoll, setSinglePoll } = useContext(PollContext)
-  const socket = useMemo(() =>  io.connect('http://localhost:3000/'), [])
+  const socket = useMemo(() =>  io.connect('https://pp-server.onrender.com'), [])
   const user = JSON.parse(localStorage.getItem('user'))
   const pathname = useParams()
   const pollId = pathname.id

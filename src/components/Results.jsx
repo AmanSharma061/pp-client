@@ -8,7 +8,7 @@ import { FaEquals } from 'react-icons/fa'
 import CARD from './CARD'
 
 const Results = () => {
-  const socket = useMemo(() => io.connect('http://localhost:3000/'), [])
+  const socket = useMemo(() => io.connect('https://pp-server.onrender.com'), [])
   const navigate = useNavigate()
   const [polls, setPolls] = useState([])
 

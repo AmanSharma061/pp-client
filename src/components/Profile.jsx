@@ -6,7 +6,7 @@ import CARD from './CARD'
 import { io } from 'socket.io-client'
 
 const Profile = () => {
-  const socket = useMemo(() =>  io.connect('http://localhost:3000/'), [])
+  const socket = useMemo(() =>  io.connect('https://pp-server.onrender.com'), [])
   const navigate = useNavigate()
   const { isAuthenticated } = useContext(UserContext)
   const user = localStorage.getItem('user')
