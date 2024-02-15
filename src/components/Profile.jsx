@@ -41,12 +41,18 @@ const Profile = () => {
   }, [])
 
   return (
-    <div className='w-full bg-gray-100  mx-auto pt-8 lg:px-48 px-8 box-border  gap-x-4  h-full'>
-      <div>
-        <h1 className='text-3xl font-bold mb-2 text-neutral-800'>
+    <div className='w-full bg-gray-100  mx-auto pt-8 lg:px-48 px-8 box-border  gap-x-2  h-full'>
+      <div className='flex md:items-start  items-center  justify-between '>
+        <h1 className='text-4xl font-bold mb-2 md:pt-8 text-neutral-800 md:text-5xl'>
           Your Profile
         </h1>
-        <div className='flex  w-full justify-between items-center'>
+        <img
+            src={userDetails?.image}
+            alt='sssss'
+            className='md:h-44 md:w-44 h-24 w-24 rounded-full'
+          />
+          </div>
+        <div className=''>
           <div className='mb-4'>
             <div className='flex  items-center  '>
               <label className=''>Name:</label>
@@ -56,12 +62,8 @@ const Profile = () => {
               <label className=''>Email:</label>
               <div className='px-3 py-2  rounded-lg'>{userDetails?.email}</div>
             </div>
-          </div>
-          <img
-            src={userDetails?.image}
-            alt='sssss'
-            className='md:h-44 md:w-44 h-36 w-36 rounded-2xl'
-          />
+   
+        
         </div>
 
         <div className='mb-8'>
